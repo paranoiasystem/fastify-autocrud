@@ -2,7 +2,7 @@
 
 const fp = require('fastify-plugin')
 
-function fastifyAutoCRUD (fastify, opts, next) {
+async function fastifyAutoCRUD (fastify, opts, next) {
     fastify.get('/', opts, async (req, reply) => {
         try {
             reply.type('application/json').code(200).send(await opts.Collection.find())
@@ -52,7 +52,8 @@ function fastifyAutoCRUD (fastify, opts, next) {
     next()
 }
 
-module.exports = fp(fastifyAutoCRUD, {
-    fastify: '>=2.0.0',
+/*module.exports = fp(fastifyAutoCRUD, {
     name: 'fastify-autocrud'
-})
+})*/
+
+module.exports = fastifyAutoCRUD
