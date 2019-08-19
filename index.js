@@ -1,6 +1,7 @@
 'use strict'
 
 const fp = require('fastify-plugin')
+const boom = require('boom')
 
 async function fastifyAutoCRUD (fastify, opts, next) {
     fastify.get('/', opts, async (req, reply) => {
