@@ -1,5 +1,5 @@
 # fastify-autocrud
-Plugin for autogenerate CRUD route as fast as possible. Supports Fastify versions `>=2.0.0`. 
+Plugin for autogenerate CRUD routes as fast as possible. 
 
 ## Usage
 
