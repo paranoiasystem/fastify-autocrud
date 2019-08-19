@@ -1,6 +1,6 @@
 {
     "name": "fastify-autocrud",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Plugin for autogenerate CRUD route as fast as possible.",
     "main": "index.js",
     "scripts": {
