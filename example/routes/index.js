@@ -1,8 +1,8 @@
 const productController = require('../controllers/productController')
-const autoCRUD = require('../../index')
+
 module.exports = function app(fastify, opts, next) {
 
-    fastify.register(autoCRUD, {
+    fastify.register(require('../../index'), {
         prefix: '/api/products',
         Collection: require('../models/Product'),
         additionalRoute: productController
