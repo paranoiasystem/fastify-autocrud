@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![build status](https://img.shields.io/travis/org/paranoiasystem/fastify-autocrud)](https://travis-ci.org/paranoiasystem/fastify-autocrud)
+[![build status](https://travis-ci.org/paranoiasystem/fastify-autocrud.svg?branch=master)](https://travis-ci.org/paranoiasystem/fastify-autocrud)
 [![issues](https://img.shields.io/github/issues/paranoiasystem/fastify-autocrud)](https://github.com/paranoiasystem/fastify-autocrud/issues)
 [![Coverage Status](https://coveralls.io/repos/github/paranoiasystem/fastify-autocrud/badge.svg?branch=master)](https://coveralls.io/github/paranoiasystem/fastify-autocrud?branch=master)
 [![license](https://img.shields.io/github/license/paranoiasystem/fastify-autocrud)](./LICENSE)
