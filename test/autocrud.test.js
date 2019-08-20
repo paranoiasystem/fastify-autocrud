@@ -36,7 +36,7 @@ tap.test('Test custom route fastify-autocrud', (tap) => {
   })
 })
 
-tap.test('Test get all route fastify-autocrud', (tap) => {
+/* tap.test('Test get all route fastify-autocrud', (tap) => {
   const fastify = Fastify()
   dotenv.config()
 
@@ -64,4 +64,4 @@ tap.test('Test get all route fastify-autocrud', (tap) => {
       throw err
     })
   })
-})
+}) */
