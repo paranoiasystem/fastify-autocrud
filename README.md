@@ -1,4 +1,7 @@
 # fastify-autocrud
+
+[![build status](https://img.shields.io/travis/com/paranoiasystem/fastify-autocrud)](https://travis-ci.com/paranoiasystem/fastify-autocrud)
+
 Plugin for autogenerate CRUD routes as fast as possible. 
 
 ## Install 
