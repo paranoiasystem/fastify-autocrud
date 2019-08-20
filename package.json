@@ -10,7 +10,7 @@
         "lintfix": "standard --fix",
         "example": "node example/server.js",
         "test": "npm run lint && npm run unit",
-        "unit": "tap test/*.test.js",
+        "unit": "tap test/*.test.js"
     },
     "repository": {
         "type": "git",
