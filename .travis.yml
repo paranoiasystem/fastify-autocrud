@@ -11,7 +11,6 @@ services:
 
 env:
   - DATABASE_URI=mongodb://admin:admin@127.0.0.1/mydb_test
-  - COVERALLS_REPO_TOKEN=EroXecIkhBiuMwpv2uIKcLTLTcEqmZYcl
 
 os:
   - linux
