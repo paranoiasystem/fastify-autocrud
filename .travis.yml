@@ -14,7 +14,6 @@ env:
 
 os:
   - linux
-  - windows
 
 before_script:
   - sleep 15
