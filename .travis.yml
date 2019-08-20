@@ -1,0 +1,29 @@
+language: node_js
+
+node_js:
+  - "6"
+  - "8"
+  - "10"
+  - "11"
+  - "12"
+
+services:
+  - mongodb
+
+env:
+  - DATABASE_URI=mongodb://admin:admin@127.0.0.1/mydb_test
+
+os:
+  - linux
+  - windows
+
+before_script:
+  - mongo mydb_test --eval 'db.createUser({user:"admin",pwd:"admin",roles:["readWrite"]});'
+
+script:
+  - npm run example
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always
