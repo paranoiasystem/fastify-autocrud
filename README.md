@@ -1,6 +1,11 @@
 # fastify-autocrud
 
 [![build status](https://img.shields.io/travis/com/paranoiasystem/fastify-autocrud)](https://travis-ci.com/paranoiasystem/fastify-autocrud)
+[![issues](https://img.shields.io/github/issues/paranoiasystem/fastify-autocrud)](https://github.com/paranoiasystem/fastify-autocrud/issues)
+[![license](https://img.shields.io/github/license/paranoiasystem/fastify-autocrud)](./LICENSE)
+![version](https://img.shields.io/npm/v/fastify-autocrud)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)
+[![Beerpay](https://beerpay.io/paranoiasystem/fastify-autocrud/badge.svg)](https://beerpay.io/paranoiasystem/fastify-autocrud)
 
 Plugin for autogenerate CRUD routes as fast as possible. 
 
