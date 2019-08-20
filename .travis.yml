@@ -11,6 +11,7 @@ services:
 
 env:
   - DATABASE_URI=mongodb://admin:admin@127.0.0.1/mydb_test
+  - COVERALLS_REPO_TOKEN=EroXecIkhBiuMwpv2uIKcLTLTcEqmZYcl
 
 os:
   - linux
@@ -20,7 +21,7 @@ before_script:
   - mongo mydb_test --eval 'db.createUser({user:"admin",pwd:"admin",roles:["readWrite"]});'
 
 script:
-  - npm run lint && npm run coveralls
+  - npm run coveralls
 
 notifications:
   email:

@@ -4,14 +4,13 @@
     "description": "Plugin for autogenerate CRUD route as fast as possible.",
     "main": "index.js",
     "scripts": {
-        "coverage": "npm run unit -- --cov --coverage-report=html",
-        "coveralls": "npm run unit -- --cov",
+        "coveralls": "npm run test -- --cov --coverage-report=html && nyc report --reporter=text-lcov | coveralls",
         "lint": "npm run lint:standard",
         "lint:standard": "standard | snazzy",
         "lintfix": "standard --fix",
         "example": "node example/server.js",
         "test": "npm run lint && npm run unit",
-        "unit": "tap test/*.test.js"
+        "unit": "tap test/*.test.js",
     },
     "repository": {
         "type": "git",
