@@ -31,7 +31,7 @@ tap.test('Test fastify-autocrud', (tap) => {
     tap.test('Test custom route', (tap) => {
       axios.get('http://localhost:3000/api/products/custom').then((res) => {
         tap.strictEqual(res.status, 200)
-        tap.is(JSON.stringify(res.data), '{"customroute":"ok"}')
+        tap.is(res.data.customroute, 'ok')
         tap.end()
       }).catch((err) => {
         throw err
@@ -41,7 +41,7 @@ tap.test('Test fastify-autocrud', (tap) => {
     tap.test('Test get all route', (tap) => {
       axios.get('http://localhost:3000/api/products').then((res) => {
         tap.strictEqual(res.status, 200)
-        tap.is(JSON.stringify(res.data), '[]')
+        tap.is(res.data.data.length, 0)
         tap.end()
       }).catch((err) => {
         throw err

@@ -3,19 +3,16 @@ const boom = require('boom')
 function plugin (fastify, opts, next) {
   const schema = generateResponseSchema(opts.Collection)
   const schemaWithBody = generateSchemaWithBody(opts.Collection)
-  console.log('\n')
-  console.log(JSON.stringify(schema, 2))
-  console.log('\n')
-  console.log(JSON.stringify(schemaWithBody, 2))
-  console.log('\n')
+  const schemaForGetAll = generateSchemaForGetAll(opts.Collection)
 
   fastify.route(
     {
       method: 'GET',
       url: '/',
+      schemaForGetAll,
       handler: async function (req, reply) {
         try {
-          reply.type('application/json').code(200).send(await opts.Collection.find())
+          reply.type('application/json').code(200).send({ data: await opts.Collection.find() })
         } catch (err) {
           throw boom.boomify(err)
         }
@@ -27,7 +24,7 @@ function plugin (fastify, opts, next) {
     {
       method: 'GET',
       url: '/:id',
-      schema: schema,
+      schema,
       handler: async function (req, reply) {
         try {
           reply.type('application/json').code(200).send(await opts.Collection.findById(req.params.id))
@@ -42,7 +39,7 @@ function plugin (fastify, opts, next) {
     {
       method: 'POST',
       url: '/',
-      schema: schemaWithBody,
+      schemaWithBody,
       handler: async function (req, reply) {
         try {
           reply.type('application/json').code(201).send(await new opts.Collection(req.body).save())
@@ -57,7 +54,7 @@ function plugin (fastify, opts, next) {
     {
       method: 'PUT',
       url: '/:id',
-      schema: schemaWithBody,
+      schemaWithBody,
       handler: async function (req, reply) {
         try {
           reply.type('application/json').code(200).send(await opts.Collection.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }))
@@ -93,33 +90,48 @@ const generateResponseSchema = (Collection) => {
   let paths = Collection.schema.paths
   let schema = {
     response: {
-      '20x': {
+      '2xx': {
         type: 'object',
         properties: {}
       }
     }
   }
   for (let path in paths) {
-    schema.response['20x'].properties[path] = {}
+    schema.response['2xx'].properties[path] = {}
     switch (paths[path].instance) {
       case 'ObjectID':
-        schema.response['20x'].properties[path]['type'] = 'string'
+        schema.response['2xx'].properties[path]['type'] = 'string'
         break
       case 'Date':
-        schema.response['20x'].properties[path]['type'] = 'string'
+        schema.response['2xx'].properties[path]['type'] = 'string'
         break
       default:
-        schema.response['20x'].properties[path]['type'] = paths[path].instance.toLowerCase()
+        schema.response['2xx'].properties[path]['type'] = paths[path].instance.toLowerCase()
         break
     }
   }
   return schema
 }
 
+const generateSchemaForGetAll = (Collection) => {
+  return {
+    response: {
+      '2xx': {
+        type: 'object',
+        properties: {
+          data: {
+            type: 'array'
+          }
+        }
+      }
+    }
+  }
+}
+
 const generateSchemaWithBody = (Collection) => {
   let schema = generateResponseSchema(Collection)
   schema.body = {}
-  schema.body = schema.response['20x']
+  schema.body = schema.response['2xx']
   return schema
 }
 
