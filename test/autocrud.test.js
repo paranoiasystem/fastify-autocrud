@@ -71,6 +71,28 @@ tap.test('Test fastify-autocrud', (tap) => {
       })
     })
 
+    tap.test('Test put route', (tap) => {
+      axios.put('http://localhost:3000/api/products/' + testId, {
+        name: 'unit test 2'
+      }).then((res) => {
+        tap.strictEqual(res.status, 200)
+        tap.is(res.data.name, 'unit test 2')
+        tap.end()
+      }).catch((err) => {
+        throw err
+      })
+    })
+
+    tap.test('Test get by id route after put', (tap) => {
+      axios.get('http://localhost:3000/api/products/' + testId).then((res) => {
+        tap.strictEqual(res.status, 200)
+        tap.is(res.data.name, 'unit test 2')
+        tap.end()
+      }).catch((err) => {
+        throw err
+      })
+    })
+
     tap.test('Test delete route', (tap) => {
       axios.delete('http://localhost:3000/api/products/' + testId).then((res) => {
         tap.strictEqual(res.status, 204)
