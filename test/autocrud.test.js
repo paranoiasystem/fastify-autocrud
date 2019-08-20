@@ -102,6 +102,46 @@ tap.test('Test fastify-autocrud', (tap) => {
       })
     })
 
+    tap.test('Test error get by id route', (tap) => {
+      axios.get('http://localhost:3000/api/products/wrong_id').then((res) => {
+        tap.end()
+      }).catch((err) => {
+        tap.strictEqual(err.response.status, 500)
+        tap.end()
+      })
+    })
+
+    tap.test('Test error post route', (tap) => {
+      axios.post('http://localhost:3000/api/products', {
+        _id: 'unit test error'
+      }).then((res) => {
+        tap.end()
+      }).catch((err) => {
+        tap.strictEqual(err.response.status, 500)
+        tap.end()
+      })
+    })
+
+    tap.test('Test error put route', (tap) => {
+      axios.put('http://localhost:3000/api/products/wrong_id', {
+        name: 'unit test 2'
+      }).then((res) => {
+        tap.end()
+      }).catch((err) => {
+        tap.strictEqual(err.response.status, 500)
+        tap.end()
+      })
+    })
+
+    tap.test('Test error delete route', (tap) => {
+      axios.delete('http://localhost:3000/api/products/wrong_id').then((res) => {
+        tap.end()
+      }).catch((err) => {
+        tap.strictEqual(err.response.status, 500)
+        tap.end()
+      })
+    })
+
     tap.end()
   })
 })
