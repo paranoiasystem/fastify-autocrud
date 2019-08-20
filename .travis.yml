@@ -1,7 +1,6 @@
 language: node_js
 
 node_js:
-  - "6"
   - "8"
   - "10"
   - "11"
@@ -18,10 +17,11 @@ os:
   - windows
 
 before_script:
+  - sleep 15
   - mongo mydb_test --eval 'db.createUser({user:"admin",pwd:"admin",roles:["readWrite"]});'
 
 script:
-  - npm run example
+  - npm run lint && npm run coveralls
 
 notifications:
   email:
