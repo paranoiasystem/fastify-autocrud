@@ -7,7 +7,8 @@ const mongoose = require('mongoose')
 
 mongoose.connect(process.env.DATABASE_URI, {
   useCreateIndex: true,
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useFindAndModify: false
 }).then(() => console.log('MongoDB connected...'))
   .catch(err => console.log(err))
 

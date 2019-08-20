@@ -14,9 +14,9 @@ tap.test('Test fastify-autocrud', (tap) => {
 
   mongoose.connect(process.env.DATABASE_URI, {
     useCreateIndex: true,
-    useNewUrlParser: true
-  }).then(() => console.log('MongoDB connected...'))
-    .catch(err => console.log(err))
+    useNewUrlParser: true,
+    useFindAndModify: false
+  }).catch(err => console.log(err))
 
   fastify.register(require('../example/routes'))
 

@@ -2,8 +2,9 @@
 
 <div align="center">
 
-[![build status](https://img.shields.io/travis/com/paranoiasystem/fastify-autocrud)](https://travis-ci.com/paranoiasystem/fastify-autocrud)
+[![build status](https://img.shields.io/travis/org/paranoiasystem/fastify-autocrud)](https://travis-ci.org/paranoiasystem/fastify-autocrud)
 [![issues](https://img.shields.io/github/issues/paranoiasystem/fastify-autocrud)](https://github.com/paranoiasystem/fastify-autocrud/issues)
+[![Coverage Status](https://coveralls.io/repos/github/paranoiasystem/fastify-autocrud/badge.svg?branch=master)](https://coveralls.io/github/paranoiasystem/fastify-autocrud?branch=master)
 [![license](https://img.shields.io/github/license/paranoiasystem/fastify-autocrud)](./LICENSE)
 ![version](https://img.shields.io/npm/v/fastify-autocrud)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)
