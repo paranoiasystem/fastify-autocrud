@@ -12,7 +12,7 @@ tap.test('Test fastify-autocrud', (tap) => {
   const fastify = Fastify()
   dotenv.config()
 
-  mongoose.connect(process.env.DATABASE_URI, {
+  mongoose.connect(process.env.DATABASE_URI || 'mongodb://127.0.0.1/mydb_test', {
     useCreateIndex: true,
     useNewUrlParser: true,
     useFindAndModify: false
