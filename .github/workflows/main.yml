@@ -1,0 +1,22 @@
+name: Test CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup Test ENV
+      run: |
+        apt-get install mongoù
+        sleep 15
+        docker run -d -p 27017:27017 mongo
+        sleep 15
+        mongo mydb_test --eval 'db.createUser({user:"admin",pwd:"admin",roles:["readWrite"]});'
+    - name: npm install and test
+      run: |
+        npm install
+        npm run coveralls
