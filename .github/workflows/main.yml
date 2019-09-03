@@ -13,8 +13,6 @@ jobs:
       run: |
         docker run -d -p 27017:27017 mongo
     - name: npm install and test
-      env:
-        MONGO_URI: mongodb://127.0.0.1/mydb_test
       run: |
         npm install
         npm run coveralls
