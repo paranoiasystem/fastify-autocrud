@@ -5,11 +5,7 @@ const fastify = require('fastify')({
 require('dotenv').config()
 const mongoose = require('mongoose')
 
-mongoose.connect(process.env.DATABASE_URI, {
-  useCreateIndex: true,
-  useNewUrlParser: true,
-  useFindAndModify: false
-}).then(() => console.log('MongoDB connected...'))
+mongoose.connect(process.env.DATABASE_URI).then(() => console.log('MongoDB connected...'))
   .catch(err => console.log(err))
 
 fastify.register(require('./routes'))
