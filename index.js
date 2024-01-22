@@ -3,7 +3,31 @@ const boom = require('boom')
 function plugin (fastify, opts, next) {
   fastify.get('/', opts, async (req, reply) => {
     try {
-      reply.type('application/json').code(200).send(await opts.Collection.find())
+      opts = { ...opts,
+        schema: {
+          querystring: {
+            type: 'object',
+            properties: {
+              filters: {
+                type: 'string'
+              },
+              pagination: {
+                type: 'string'
+              }
+            }
+          }
+        }
+      }
+      const filterObject = JSON.parse(req.query.filters ||= '{}')
+      for (const key in filterObject) {
+        if (typeof filterObject[key] === 'string') {
+          if (filterObject[key].startsWith('/') && filterObject[key].endsWith('/')) {
+            filterObject[key] = new RegExp(filterObject[key].slice(1, -1), 'i')
+          }
+        }
+      }
+      const paginateOptions = JSON.parse(req.query.pagination ||= '{"pagination": false}')
+      reply.type('application/json').code(200).send(await opts.Collection.paginate(filterObject, paginateOptions))
     } catch (err) {
       throw boom.boomify(err)
     }
